@@ -1,0 +1,25 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<TargetFramework>net6.0</TargetFramework>
+		<Version>1.0.0</Version>
+		<Company>Nexus-Network-Cloud</Company>
+		<RepositoryUrl>https://github.com/nexus-network-cloud/csharp-vault</RepositoryUrl>
+		<PackageId>CsharpVault</PackageId>
+		<Authors>Morkeon</Authors>
+		<Product>NexusNetworkCloud</Product>
+		<ImplicitUsings>enable</ImplicitUsings>
+		<Nullable>enable</Nullable>
+		<RootNamespace>NexusNetworkCloud.$(MSBuildProjectName.Replace(" ", "_"))</RootNamespace>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<PackageReference Include="Microsoft.Extensions.Logging" Version="6.0.0" />
+		<PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<Folder Include="Backend\" />
+	</ItemGroup>
+
+</Project>
