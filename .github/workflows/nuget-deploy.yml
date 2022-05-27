@@ -26,6 +26,6 @@ jobs:
         dotnet pack CsharpVault.csproj --output nuget-packages --configuration Release
     - name: Push
       run: |
-        cd ChsarpVault/CsharpVault
+        cd CsharpVault/CsharpVault
         dotnet nuget add source --username nexus-network-cloud --password ${{ secrets.GITHUB_TOKEN }} --store-password-in-clear-text --name github "https://nuget.pkg.github.com/nexus-network-cloud/index.json"
         dotnet nuget push **/*.nupkg --skip-duplicate --source https://nuget.pkg.github.com/nexus-network-cloud/index.json
