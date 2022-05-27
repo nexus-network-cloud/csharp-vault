@@ -5,9 +5,9 @@
 		<Version>1.0.0</Version>
 		<Company>Nexus-Network-Cloud</Company>
 		<RepositoryUrl>https://github.com/nexus-network-cloud/csharp-vault</RepositoryUrl>
+		<RepositoryType>git</RepositoryType>
 		<PackageId>CsharpVault</PackageId>
 		<Authors>Morkeon</Authors>
-		<Product>NexusNetworkCloud</Product>
 		<ImplicitUsings>enable</ImplicitUsings>
 		<Nullable>enable</Nullable>
 		<RootNamespace>NexusNetworkCloud.$(MSBuildProjectName.Replace(" ", "_"))</RootNamespace>
