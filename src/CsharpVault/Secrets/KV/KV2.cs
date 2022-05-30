@@ -12,6 +12,7 @@ namespace NexusNetworkCloud.CsharpVault.Secrets.KV
         Task<NoContentVaultResponse> ConfigureAsync(KV2Configuration config);
         Task<VaultResponse<KV2Configuration>> ReadConfigurationAsync();
         Task<VaultResponse<KV2Secret>> ReadSecretAsync(string path, int version = 0);
+        Task<VaultResponse<KV2SecretMetadata>> CreateSecretAsync(string path, JObject data, int version = 0);
     }
 
     public class KV2 : IKV2
@@ -48,6 +49,13 @@ namespace NexusNetworkCloud.CsharpVault.Secrets.KV
             var vaultResponse = await _connectionHandler.SendVaultRequestAsync(new VaultRequest { HttpMethod = HttpMethod.Get, ApiEndpoint = $"{mount}/data/{path}?version={version}"});
 
             return JObject.Parse(await vaultResponse.Content.ReadAsStringAsync()).ToObject<VaultResponse<KV2Secret>>() ?? new VaultResponse<KV2Secret>();
+        }
+
+        public async Task<VaultResponse<KV2SecretMetadata>> CreateSecretAsync(string path, JObject data, int version = 0)
+        {
+            var vaultResponse = await _connectionHandler.SendVaultRequestAsync(new VaultRequest { HttpMethod = HttpMethod.Patch, ApiEndpoint = $"{mount}/data/{path}", RequestPayload = new JObject { { "data", data } } });
+
+            return JObject.Parse(await vaultResponse.Content.ReadAsStringAsync()).ToObject<VaultResponse<KV2SecretMetadata>>() ?? new VaultResponse<KV2SecretMetadata>();
         }
     }
 
