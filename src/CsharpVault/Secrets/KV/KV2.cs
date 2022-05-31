@@ -53,7 +53,7 @@ namespace NexusNetworkCloud.CsharpVault.Secrets.KV
 
         public async Task<VaultResponse<KV2SecretMetadata>> CreateSecretAsync(string path, JObject data, int version = 0)
         {
-            var vaultResponse = await _connectionHandler.SendVaultRequestAsync(new VaultRequest { HttpMethod = HttpMethod.Patch, ApiEndpoint = $"{mount}/data/{path}", RequestPayload = new JObject { { "data", data } } });
+            var vaultResponse = await _connectionHandler.SendVaultRequestAsync(new VaultRequest { HttpMethod = HttpMethod.Post, ApiEndpoint = $"{mount}/data/{path}", RequestPayload = new JObject { { "data", data } } });
 
             return JObject.Parse(await vaultResponse.Content.ReadAsStringAsync()).ToObject<VaultResponse<KV2SecretMetadata>>() ?? new VaultResponse<KV2SecretMetadata>();
         }

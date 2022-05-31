@@ -7,5 +7,6 @@ namespace NexusNetworkCloud.CsharpVault.Vault.Requests
         internal HttpMethod HttpMethod { get; set; } = HttpMethod.Get;
         internal string ApiEndpoint { get; set; } = "/";
         internal JObject? RequestPayload { get; set; }
+        internal string RequestPayloadDataType { get; set; } = "application/json";
     }
 }
