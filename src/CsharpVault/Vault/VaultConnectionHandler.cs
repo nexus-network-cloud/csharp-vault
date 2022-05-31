@@ -42,9 +42,8 @@ namespace NexusNetworkCloud.CsharpVault.Vault
             using (HttpRequestMessage vaultRequest = new HttpRequestMessage(request.HttpMethod, $"{baseApiPath}/v1/{request.ApiEndpoint}"))
             {
                 if (request.RequestPayload is not null)
-                    vaultRequest.Content = new StringContent(request.RequestPayload.ToString(), Encoding.UTF8, "application/json");
+                    vaultRequest.Content = new StringContent(request.RequestPayload.ToString(), Encoding.UTF8, request.RequestPayloadDataType);
 
-                vaultRequest.Headers.Add("Content-Type", request.RequestPayloadDataType);
                 vaultRequest.Headers.Add("X-Vault-Token", _credentialHandler.Token);
 
                 return await _client.SendAsync(vaultRequest);
